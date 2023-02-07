@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3 th:text="${titulo}"></h3>
+	<br>
+	<p th:if="${!clientes.isEmpty()}">La lista esta vacia</p>
+	<table>
+		<thead>
+			<tr>
+				<th> ID</th>
+				<th> Nombre</th>
+				<th> Apellido</th>
+				<th> email</th>
+				<th> Numero de telefono</th>
+				<th> Id Cuenta</th>
+			</tr>
+			<tbody>
+				
+				<tr th:each="cliente: ${clientes}">
+					<td th:text="${cliente.getIdCliente()}"></td>
+					<td th:text="${cliente.getNombre()}"></td>
+					<td th:text="${cliente.getApellido()}"></td>
+					<td th:text="${cliente.getEmail()}"></td>
+					<td th:text="${cliente.getNumeroTelefonico()}"></td>
+					<td th:text="${cliente.getIdCuenta()}"></td>
+				</tr>
+			</tbody>
+		</thead>
+	</table>
+	<a th:href="@{/formClientes}">Formulario</a>
+	<a th:href="@{/}">Atras</a>
+</body>
+</html>
+

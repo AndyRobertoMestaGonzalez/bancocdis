@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3 th:text="${titulo}"></h3>
+	<br>
+	<p th:text="${mensaje}"></p>
+	<br>
+	<tbody>
+		<p th:if="${result}" th:text="${memsaje}"></p>
+		<div>
+			<form th:action ="@{/formClientes}" th:object ="${cliente}" method="post">
+			<table>
+				<tr>
+					<td>Nombre</td>
+					<td><input type="text" th:field="*{nombre}"><th>
+					
+				</tr>
+				<tr>
+					<td>Apellido</td>
+					<td><input type="text" th:field="*{apellido}"><th>
+				</tr>
+				<tr>
+					<td>Numero telefonico</td>
+					<td><input type="text" th:field="*{numeroTelefonico}"><th>
+				</tr>
+				<tr>
+					<td>Correo electronico</td>
+					<td><input type="text" th:field="*{email}"></td>
+				</tr>
+				<tr>
+					<td>Id Cuenta</td>
+					<td><input type="text" th:field="*{idCuenta}"></td>
+				</tr>
+
+				<!-- <tr>
+					<td>ID cuenta</td>
+					<td>
+						<select th:field="*{cuenta}">
+							<option th:each="cuenta : ${listaCuentas}"
+											th:value="${cuenta.getId()}"
+											th:text="${cuenta.getId()+'Nombre: '+ cuenta.getNombre()}"></option>
+						</select>
+					</td>
+				</tr -->
+			</table>
+			<br> <input type="submit"  value="Registrar Cliente">
+			</form>
+		</div>
+	</tbody>
+	<hr>
+	<a th:href="@{/clientes-lista}">Volver...</a>
+</body>
+</html>

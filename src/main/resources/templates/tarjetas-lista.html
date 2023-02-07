@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+	<h3 th:text="${titulo}"></h3>
+	<br>
+	<a th:href="@{/formtarjeta}">Registrar tarjeta</a>
+	<table>
+		<thead>
+			<tr>
+				<th> ID</th>
+				<th> Numero de tarjeta</th>
+				<th> ICV</th>
+				<th> Vencimiento</th>
+				<th>Cuenta</th>
+			</tr>
+			<tbody>
+				<p th:if="${tarjetas.isEmpty()}">No hay tarjetas en la base de datos</p>
+				<tr th:each="tarjeta: ${tarjetas}"></tr>
+				<tr th:each="tarjeta: ${tarjetas}">
+					<td th:text="${tarjeta.getId()}"></td>
+					<td th:text="${tarjeta.getNumeroTarjeta()}"></td>
+					<td th:text="${tarjeta.getIcv()}"></td>
+					<td th:text="${tarjeta.getVencimiento()}"></td>
+					<td th:text="${tarjeta.getCuenta().getId()}"></td>
+				</tr>
+
+				
+				</tbody>
+		</thead>
+	</table>
+</body>
+</html>
