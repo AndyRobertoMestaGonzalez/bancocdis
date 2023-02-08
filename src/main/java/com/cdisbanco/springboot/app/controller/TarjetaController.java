@@ -60,7 +60,7 @@ public class TarjetaController {
 	@RequestMapping(value ="/formtarjeta/{id}")
 	public String editar(@PathVariable(value="id") Long id, Map<String, Object> model) {
 		Tarjeta tarjeta = null;
-		if(id >0) {
+		if(id !=null && id > 0) {
 			tarjeta = tarjetaDao.findOne(id);
 			
 		}else {
@@ -80,6 +80,7 @@ public class TarjetaController {
 		}else {
 			model.addAttribute("result",false);
 		}
+		
 		model.addAttribute("titulo","Formulario de tarjta");
 		model.addAttribute("mensaje","Se envio la informacion correctamente");
 		try {
@@ -93,11 +94,11 @@ public class TarjetaController {
 	}
 	@RequestMapping(value="/eliminar/{id}")
 	public String eliminar(@PathVariable(value = "id") Long id) {
-		if(id >0) {
+		if(id !=null && id > 0) {
 			tarjetaDao.delete(id);
 			
 		}
-		return "redirect:index";
+		return "redirect:/tarjetas-lista";
 	}
 	
 }

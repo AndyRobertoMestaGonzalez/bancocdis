@@ -26,6 +26,8 @@
 					<td th:text="${tarjeta.getIcv()}"></td>
 					<td th:text="${tarjeta.getVencimiento()}"></td>
 					<td th:text="${tarjeta.getCuenta().getId()}"></td>
+					<td><a th:href="@{/formtarjeta/}+${tarjeta.getId()}" th:text="'Editar'"></a></td>
+					<td><a th:href="@{/eliminar/}+${tarjeta.getId()}" onclick="return confirm('¿Desea eliminar la tarjeta?');" th:text="'Eliminar'"></a></td>
 				</tr>
 
 				

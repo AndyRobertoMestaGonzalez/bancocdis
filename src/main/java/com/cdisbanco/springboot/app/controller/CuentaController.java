@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cdisbanco.springboot.app.editors.ClientePropertyEditor;
 import com.cdisbanco.springboot.app.editors.CuentaPropertyEditor;
+import com.cdisbanco.springboot.app.models.dao.ClienteDaoImpl;
 import com.cdisbanco.springboot.app.models.dao.IClienteDao;
 import com.cdisbanco.springboot.app.models.dao.ICuentaDao;
 import com.cdisbanco.springboot.app.models.entity.Cliente;
@@ -91,9 +92,13 @@ public class CuentaController {
 		}else {
 			model.addAttribute("result",false);
 		}
+		Cliente cliente2 = null;
+		cliente2 = clienteDao.findOne(Long.parseLong("1"));
+		cliente2.setNombre("Damian");
 		model.addAttribute("titlo","Formulario de cuenta");
 		model.addAttribute("mensage","Se envio la informacion correctamente");
 		try {
+			clienteDao.Save(cliente2);
 			cuentaDao.Save(cuenta);
 		}catch(DataAccessException e) {
 			e.printStackTrace();
